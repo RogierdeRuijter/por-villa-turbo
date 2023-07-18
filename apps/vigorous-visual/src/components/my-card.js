@@ -1,6 +1,6 @@
 import { html, css, LitElement } from "lit";
 
-export class WebComponent extends LitElement {
+export class WebComponent2 extends LitElement {
   static styles = css`
     :host {
       display: block;
@@ -31,4 +31,3 @@ export class WebComponent extends LitElement {
     `;
   }
 }
-customElements.define("web-component", WebComponent);

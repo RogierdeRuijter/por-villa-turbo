@@ -10,7 +10,9 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/lit": "2.0.1",
     "astro": "^2.8.4",
-    "web-component": "*"
+    "web-component": "*",
+    "lit": "2.7.6"
   }
 }
