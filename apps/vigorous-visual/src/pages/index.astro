@@ -13,8 +13,6 @@ query {
 }
 `;
 
-
-
 const variables = {}
 const response = await fetch(import.meta.env.PREPR_ENDPOINT, {
         method: 'POST',
@@ -24,14 +22,13 @@ const response = await fetch(import.meta.env.PREPR_ENDPOINT, {
         body: JSON.stringify({ query, variables }),
     })
 
-const { data, errors } = await response.json()
-console.log(data.Drievoor12updates);
-console.error(errors);
+const { data} = await response.json()
 ---
 
 <Layout title="Welcome to Astro.">
   <main>
     <h1>Welcome to</h1>
     <WebComponent client:load />
+    <div>3voor12 title: {data.Drievoor12updates.items[4].title}</div>
   </main>
 </Layout>
