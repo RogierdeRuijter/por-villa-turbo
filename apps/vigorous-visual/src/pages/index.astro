@@ -13,17 +13,16 @@ query {
 }
 `;
 
-const variables = {}
+const variables = {};
 const response = await fetch(import.meta.env.PREPR_ENDPOINT, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ query, variables }),
-    })
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+  },
+  body: JSON.stringify({ query, variables }),
+});
 
-const { data } = await response.json()
-
+const { data } = await response.json();
 ---
 
 <Layout title="Welcome to Astro.">
@@ -33,16 +32,17 @@ const { data } = await response.json()
         display: grid;
         grid-template-columns: 1fr 1fr;
       }
-      main div:first-of-type h2{
+      main div:first-of-type h2 {
         color: green;
-        }
-        main div:last-of-type h2 {
-          color: blue;
-          }
+      }
+      main div:last-of-type h2 {
+        color: blue;
+      }
     </style>
+
     <div>
       <h2>een webcomponent</h2>
-      <WebComponent client:load header="teller:"/>
+      <WebComponent client:load header="teller:" />
     </div>
     <div>
       <h2>3voor12 artikelen uit het CMS</h2>

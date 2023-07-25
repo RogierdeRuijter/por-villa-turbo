@@ -1,1 +1,1 @@
-export { WebComponent } from './src/WebComponent.js';
+export { WebComponent } from "./src/WebComponent.js";

@@ -1,5 +1,6 @@
 {
   "private": true,
+  "type": "module",
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
@@ -10,7 +11,8 @@
     "@turbo/gen": "^1.9.7",
     "eslint": "^7.32.0",
     "eslint-config-custom": "*",
-    "prettier": "^2.5.1",
+    "prettier": "^2.8.8",
+    "prettier-plugin-astro": "^0.10.0",
     "turbo": "latest"
   },
   "name": "poc-turbo-villa",

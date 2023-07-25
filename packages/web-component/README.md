@@ -12,13 +12,11 @@ npm i web-component
 
 ```html
 <script type="module">
-  import 'web-component/web-component.js';
+  import "web-component/web-component.js";
 </script>
 
 <web-component></web-component>
 ```
-
-
 
 ## Tooling configs
 
