@@ -3,9 +3,10 @@ import { html, css, LitElement } from "lit";
 export class WebComponent extends LitElement {
   static styles = css`
     :host {
-      display: block;
-      padding: 25px;
+      display: inline-block;
+      padding: 8px;
       color: var(--web-component-text-color, #000);
+      border: 1px solid black;
     }
   `;
 
@@ -26,8 +27,8 @@ export class WebComponent extends LitElement {
 
   render() {
     return html`
-      <h2>${this.header} Nr. ${this.counter}!</h2>
-      <button @click=${this.__increment}>increment</button>
+      <h2>${this.header} ${this.counter}</h2>
+      <button @click=${this.__increment}>doe der iets bij</button>
     `;
   }
 }

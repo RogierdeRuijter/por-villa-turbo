@@ -28,9 +28,26 @@ const { data } = await response.json()
 
 <Layout title="Welcome to Astro.">
   <main>
-    <h1>Welcome to</h1>
-    <WebComponent client:load />
-    <div>3voor12 title: {data.Drievoor12updates.items[4].title}</div>
-    <div>3voor12 meer title: {data.Drievoor12updates.items[3].title}</div>
+    <style>
+      main {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+      }
+      main div:first-of-type h2{
+        color: green;
+        }
+        main div:last-of-type h2 {
+          color: blue;
+          }
+    </style>
+    <div>
+      <h2>een webcomponent</h2>
+      <WebComponent client:load header="teller:"/>
+    </div>
+    <div>
+      <h2>3voor12 artikelen uit het CMS</h2>
+      <div>{data.Drievoor12updates.items[7].title}</div>
+      <div>{data.Drievoor12updates.items[4].title}</div>
+    </div>
   </main>
 </Layout>
