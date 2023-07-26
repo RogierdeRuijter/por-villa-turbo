@@ -47,7 +47,11 @@ const { data } = await response.json();
     <div>
       <h2>3voor12 artikelen uit het CMS</h2>
       <ul>
-        {data.Drievoor12updates.items.map((item) => <li>{item.title}</li>)}
+        {
+          data.Drievoor12updates.items.map((item: { title: string }) => (
+            <li>{item.title}</li>
+          ))
+        }
       </ul>
     </div>
   </main>
