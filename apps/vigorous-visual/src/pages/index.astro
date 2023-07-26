@@ -46,8 +46,9 @@ const { data } = await response.json();
     </div>
     <div>
       <h2>3voor12 artikelen uit het CMS</h2>
-      <div>{data.Drievoor12updates.items[7].title}</div>
-      <div>{data.Drievoor12updates.items[4].title}</div>
+      <ul>
+        {data.Drievoor12updates.items.map((item) => <li>{item.title}</li>)}
+      </ul>
     </div>
   </main>
 </Layout>
