@@ -3,7 +3,7 @@ import Layout from "../layouts/Layout.astro";
 import { WebComponent } from "web-component";
 // TODO: make this import work. Something about how the astro-components exports
 //   its js that doesn't work
-// import { Text } from "astro-components";
+import Text from "astro-components/text";
 
 const drievoor12query = `
 query {
@@ -52,7 +52,7 @@ const fetcher = async (query: string) => {
 };
 
 const { data } = await fetcher(drievoor12query);
-const { data: article } = await fetcher(queryArticle);
+// const { data: article } = await fetcher(queryArticle);
 ---
 
 <Layout title="Welcome to Astro.">
@@ -85,8 +85,8 @@ const { data: article } = await fetcher(queryArticle);
       </ul>
     </div>
     <div>
-      {article.Article.dynamic.map((item) => <li>{item.__typename}</li>)}
+      <!--  {article.Article.dynamic.map((item) => <li>{item.__typename}</li>)} -->
     </div>
-    <!-- <Text text="hoi" /> -->
+    <Text text="hoi" />
   </main>
 </Layout>
