@@ -1,8 +1,9 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import { WebComponent } from "web-component";
+import { Text } from "astro-components";
 
-const query = `
+const drievoor12query = `
 query {
     Drievoor12updates {
         items {
@@ -13,16 +14,43 @@ query {
 }
 `;
 
-const variables = {};
-const response = await fetch(import.meta.env.PREPR_ENDPOINT, {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({ query, variables }),
-});
+const queryArticle = `
+query {
+  Article { 
+    _id
+      dynamic { 
+        __typename
+          ... on YouTubePost {
+            _id
+              _type
+              url
+          }
+        ... on Text {
+          _id
+            _type
+            html
+            body
+            text
+            format
+        }
+      }
+  }
+}
+`;
+const fetcher = async (query: string) => {
+  const variables = {};
+  const response = await fetch(import.meta.env.PREPR_ENDPOINT, {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ query, variables }),
+  });
+  return response.json();
+};
 
-const { data } = await response.json();
+const { data } = await fetcher(drievoor12query);
+const { data: article } = await fetcher(queryArticle);
 ---
 
 <Layout title="Welcome to Astro.">
@@ -54,5 +82,9 @@ const { data } = await response.json();
         }
       </ul>
     </div>
+    <div>
+      {article.Article.dynamic.map((item) => <li>{item.__typename}</li>)}
+    </div>
+    <Text text="hoi" />
   </main>
 </Layout>

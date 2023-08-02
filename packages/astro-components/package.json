@@ -1,0 +1,8 @@
+{
+  "name": "astro-components",
+  "description": "Place for shared astro components",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "index.js",
+  "module": "index.js"
+}
