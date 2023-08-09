@@ -2,43 +2,56 @@
 import Layout from "../layouts/Layout.astro";
 
 const Articles = await fetch(`${import.meta.env.DIRECTUS_ENDPOINT}Article`, {
-    headers: {
-        "Content-Type": "application/json",
-    },
+  headers: {
+    "Content-Type": "application/json",
+  },
 });
 
-const {data: ArticleData} = await Articles.json();
+const { data: ArticleData } = await Articles.json();
 
-const Document = await fetch(`${import.meta.env.DIRECTUS_ENDPOINT}Document?fields=*.*`, {
+const Document = await fetch(
+  `${import.meta.env.DIRECTUS_ENDPOINT}Document?fields=*.*`,
+  {
     headers: {
-        "Content-Type": "application/json",
+      "Content-Type": "application/json",
     },
-});
+  }
+);
 
-const {data: DocumentData} = await Document.json();
+const { data: DocumentData } = await Document.json();
 ---
 
 <Layout title="Welcome to Second">
-    <h1>Second app is best app</h1>
+  <h1>Second app is best app</h1>
 
-    <h2>Article</h2>
-    {ArticleData.map(item => {
-        return (
-                <p>{item.id}</p>
-                <p>{item.Title}</p>
-                <p>{item.Body}</p>
-        )
-    })}
+  <h2>Article</h2>
+  {
+    ArticleData.map((item) => {
+      return (
+        <div>
+          <p>{item.id}</p>
+          <p>{item.Title}</p>
+          <p>{item.Body}</p>
+        </div>
+      );
+    })
+  }
 
-    <h2>Document</h2>
-    {DocumentData.map(item => {
-        return (
-                <div>
-                    <span>{item.Name} is non-binair</span>
-                    <span>{item.Nonbinair ? <input checked type="checkbox"> : <input type="checkbox">}</span>
-                </div>
-
-        )
-    })}
-
+  <h2>Document</h2>
+  {
+    DocumentData.map((item) => {
+      return (
+        <div>
+          <span>{item.Name} is non-binair</span>
+          <span>
+            {item.Nonbinair ? (
+              <input checked type="checkbox" />
+            ) : (
+              <input type="checkbox" />
+            )}
+          </span>
+        </div>
+      );
+    })
+  }
 </Layout>
